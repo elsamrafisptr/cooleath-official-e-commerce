@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Playfair_Display, Roboto } from "next/font/google";
 import "./globals.css";
+import Layouts from "@/components/layouts";
+import NextAuthProvider from "@/components/layouts/Auth/NextAuthProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+export const roboto = Roboto({
+  subsets: ["latin"],
+  weight: "100",
+});
+
+const playfair = Playfair_Display({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${playfair.className}`}>
+        <NextAuthProvider>
+          <Layouts>{children}</Layouts>
+        </NextAuthProvider>
+      </body>
     </html>
   );
 }
