@@ -10,10 +10,10 @@ interface LayoutsProps {
 
 const Layouts = ({ children }: LayoutsProps) => {
   return (
-    <div className="no-scrollbar">
+    <div className="no-scrollbar bg-base-100">
       <Sheet>
         <Navbar />
-        <main>{children}</main>
+        <main className="">{children}</main>
         <Footer />
       </Sheet>
     </div>

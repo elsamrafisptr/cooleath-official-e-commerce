@@ -13,7 +13,7 @@ const Footer = () => {
       {!disabledRoute.includes(pathname) && (
         <>
           <div className="px-5 md:px-[72px] pt-16 pb-8 md:grid md:grid-cols-12 flex flex-col items-center bg-base-100">
-            <div className="md:col-span-3 flex flex-col">
+            <div className="md:col-span-3 flex flex-col mb-8 md:mb-0">
               <h1>Logo</h1>
             </div>
             <div className="col-span-6 col-start-7 md:grid md:grid-cols-3 flex flex-col items-center text-center md:text-left md:items-start gap-6">

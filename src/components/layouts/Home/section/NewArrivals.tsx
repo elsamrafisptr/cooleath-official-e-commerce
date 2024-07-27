@@ -21,13 +21,13 @@ const NewArrivals = () => {
             height={1024}
             className="object-cover object-center aspect-[5/4] md:h-[505.19px]"
           />
-          <div className="absolute bottom-10 left-10 flex items-center gap-3 z-20">
-            <h1 className="px-8 py-2.5 bg-black text-white font-medium text-lg border-2 border-white rounded-full">
+          <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 flex items-center gap-3 z-20">
+            <h1 className="px-6 md:px-8 py-2 md:py-2.5 bg-black text-white md:font-medium text-sm md:text-lg border-2 border-white rounded-full">
               Cooleath Pleated Bag
             </h1>
             <Link
               href={"/showroom"}
-              className="border-2 border-white px-8 py-2.5 rounded-full text-white text-lg font-medium"
+              className="border-2 border-white px-6 md:px-8 py-2 md:py-2.5 rounded-full text-white text-sm md:text-lg md:font-medium"
             >
               Shop Now
             </Link>
@@ -61,7 +61,7 @@ const NewArrivals = () => {
             className="object-cover object-bottom aspect-[5/4]"
           />
         </div>
-        <div className="col-span-6 md:col-span-3 md:col-start-10 aspect-[5/4] row-span-1 row-start-2 bg-black relative">
+        <div className="col-span-6 md:col-span-3 md:col-start-10 aspect-[5/4] row-span-1 md:row-start-2 bg-black relative">
           <Image
             alt=""
             src={"/alt_image.jpg"}
@@ -69,7 +69,7 @@ const NewArrivals = () => {
             height={1024}
             className="object-cover object-bottom aspect-[5/4] brightness-50"
           />
-          <h1 className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-gray-300 font-medium text-lg">+ More Image</h1>
+          <h1 className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-gray-300 font-medium text-lg text-center md:text-left">+ More Image</h1>
         </div>
       </div>
     </div>

@@ -6,12 +6,14 @@ import { ProductProps } from "@/lib/content/productData";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { formatCurrency } from "@/services/generateCurrencyFormat";
+import { usePathname } from "next/navigation";
 
 const ProductCard = (props: ProductProps) => {
   const { productName, productPrice, imageGallery, variants } = props;
+  const pathname = usePathname()
   return (
     <div className="flex flex-col gap-6 w-fit">
-      <div className="aspect-[4/5] w-56 md:w-[300px] bg-gray-300 relative">
+      <div className={cn("aspect-[4/5] md:w-[300px] bg-gray-300 relative", pathname === "/showroom" ? "w-full" : "w-56" )}>
         <Image
           alt=""
           src={imageGallery[0]}
@@ -25,10 +27,10 @@ const ProductCard = (props: ProductProps) => {
       </div>
       <div className="flex  flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <h1 className="text-2xl font-bold text-left tracking-[0.02em]">
+          <h1 className="text-xl md:text-2xl font-bold text-left tracking-[0.02em]">
             {productName}
           </h1>
-          <h2 className="text-2xl font-medium text-left">
+          <h2 className="text-xl md:text-2xl font-medium text-left">
             {formatCurrency(productPrice, "USD")}
           </h2>
         </div>

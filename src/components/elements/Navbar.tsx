@@ -4,7 +4,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import NavbarItemsData, { NavbarItemsProps } from "@/lib/constant/navbar";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   Sheet,
@@ -19,6 +19,7 @@ import {
 const Navbar = () => {
   const isMobile = useIsMobile();
   const pathname = usePathname();
+  const router = useRouter();
   const disabledRoute = ["/auth/register", "/auth/login", "/dashboard"];
   const [isShow, setIsShow] = useState<boolean>(false);
   const [onTop, setOnTop] = useState<number>(0);
@@ -54,19 +55,23 @@ const Navbar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isShow]);
 
-  console.log(pathname);
+  useEffect(() => {
+    setIsShow(false);
+  }, [pathname]);
+
   return (
     <>
       {!disabledRoute.includes(pathname) && (
         <Sheet>
           <div
             className={cn(
-              "fixed w-full text-white px-5 md:px-[72px] h-24 z-50 transition duration-500 ease-in-out",
-              isShow && "bg-blue-800",
+              "fixed w-full  px-5 md:px-[72px] h-24 z-50 transition duration-500 ease-in-out",
+              isShow ? "bg-base-100 text-black" : "text-white",
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "-translate-y-full opacity-0",
-              onTop !== 0 && "bg-base-50 shadow-md text-black"
+              onTop !== 0 && "bg-base-100 shadow-md text-black",
+              isShow && onTop !== 0 ? "shadow-none" : ""
             )}
             suppressHydrationWarning
           >
@@ -209,7 +214,7 @@ const Navbar = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         width="28"
                         height="28"
-                        fill={isShow ? "#FFFFFF" : "#000000"}
+                        fill="#000000"
                         viewBox="0 0 256 256"
                       >
                         <path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"></path>
@@ -219,8 +224,9 @@ const Navbar = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         width="28"
                         height="28"
-                        fill="#FFFFFF"
+                        fill={onTop === 0 ? "#FFFFFF" : "#000000"}
                         viewBox="0 0 256 256"
+                        className="transition duration-300"
                       >
                         <path d="M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128ZM40,76H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24ZM216,180H40a12,12,0,0,0,0,24H216a12,12,0,0,0,0-24Z"></path>
                       </svg>
@@ -250,7 +256,7 @@ const NavItem: React.FC<NavbarItemsProps> = ({
       className={cn(
         "text-2xl md:text-lg hover:underline hover:underline-offset-8 transition duration-75 w-fit",
         isMobile
-          ? `font-semibold text-white ${
+          ? `font-semibold text-black ${
               isActive ? "underline underline-offset-8" : ""
             }`
           : `font-medium ${isActive ? "underline underline-offset-8" : ""}`
@@ -264,12 +270,12 @@ const NavItem: React.FC<NavbarItemsProps> = ({
 const OpenedHeaderMenu = ({ isShow }: { isShow: boolean }) => {
   return (
     <div
-      className={`fixed w-full pt-28 pb-12 bg-blue-800 transform ${
-        isShow ? "translate-y-0" : "-translate-y-full"
+      className={`fixed w-full pt-28 pb-12 bg-base-100 transform ${
+        isShow ? "translate-y-0 shadow-md" : "-translate-y-full shadow-none"
       } duration-700 transition-transform ease-in-out top-0 z-40`}
       suppressHydrationWarning
     >
-      <ul className="flex flex-col gap-6 px-9 py-6">
+      <ul className="flex flex-col gap-6 px-5 py-6">
         {NavbarItemsData.map((val, index) => {
           return <NavItem key={index} title={val.title} route={val.route} />;
         })}
