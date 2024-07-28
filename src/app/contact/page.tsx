@@ -1,7 +1,7 @@
 import Contact from "@/components/layouts/Contact";
 
 const ContactPage = () => {
-  return <Contact />;
+    return <Contact />;
 };
 
 export default ContactPage;

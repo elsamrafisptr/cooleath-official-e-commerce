@@ -5,19 +5,19 @@ import NextAuthProvider from "./Auth/NextAuthProvider";
 import { Sheet } from "../ui/sheet";
 
 interface LayoutsProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 const Layouts = ({ children }: LayoutsProps) => {
-  return (
-    <div className="no-scrollbar bg-base-100">
-      <Sheet>
-        <Navbar />
-        <main className="">{children}</main>
-        <Footer />
-      </Sheet>
-    </div>
-  );
+    return (
+        <div className="no-scrollbar bg-base-100">
+            <Sheet>
+                <Navbar />
+                <main className="">{children}</main>
+                <Footer />
+            </Sheet>
+        </div>
+    );
 };
 
 export default Layouts;

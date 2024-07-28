@@ -4,15 +4,15 @@ import BestSeller from "./BestSeller";
 import CTA from "@/components/elements/CTA";
 
 const Home = () => {
-  return (
-    <>
-      <HeadlineSection />
-      <NewArrivals />
-      <BestSeller />
-      {/* <Collection/> */}
-      <CTA />
-    </>
-  );
+    return (
+        <>
+            <HeadlineSection />
+            <NewArrivals />
+            <BestSeller />
+            {/* <Collection/> */}
+            <CTA />
+        </>
+    );
 };
 
 export default Home;
